@@ -20,22 +20,23 @@ export const LocationButton: React.FC = () => {
   return (
     <div className="plasmo-flex plasmo-flex-col plasmo-items-center plasmo-justify-center plasmo-h-screen">
     <button
-      className={`plasmo-w-24 h-24 plasmo-rounded-full plasmo-bg-red-500 plasmo-text-white ${
+      className={`plasmo-p-3 plasmo-text-xl plasmo-h-[200px] plasmo-w-[200px] plasmo-rounded-full plasmo-bg-red-500 hover:plasmo-bg-red-700 plasmo-text-white ${
         isLoading ? "plasmo-hidden" : "plasmo-block"
       }`}
       onClick={getLocation}
       disabled={isLoading}
     >
-      Show my Location
+      Show My Location
     </button>
+    
     {isLoading && (
-      <div className="plasmo-w-24 h-24 plasmo-rounded-full plasmo-bg-green-500 plasmo-flex plasmo-items-center plasmo-justify-center">
+      <div className="plasmo-h-[200px] plasmo-text-xl plasmo-w-[200px] plasmo-rounded-full plasmo-bg-green-500 plasmo-flex plasmo-items-center plasmo-justify-center">
         Loading....
       </div>
     )}
     {!isLoading && country && city && (
-      <div className="plasmo-mt-4 plasmo-text-center">
-        Your country is {country} and city is {city}.
+      <div className="plasmo-text-black plasmo-mt-4 plasmo-text-center plasmo-text-xl">
+        Your country is <span className="plasmo-font-bold">{city}</span> and <br></br>city is <span className="plasmo-font-bold">{country}</span>.
       </div>
     )}
   </div>
