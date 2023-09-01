@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const LocationButton: React.FC = () => {
+export const LocationButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -18,22 +18,26 @@ const LocationButton: React.FC = () => {
   };
 
   return (
-    <div className="plasmo-h-[500px] plasmo-w-[500px] ">
-      <button
-        className="plasmo-bg-blue-500 plasmo-text-white plasmo-px-4 plasmo-py-2 plasmo-rounded"
-        onClick={getLocation}
-        disabled={isLoading}
-      >
-        Show my Location
-      </button>
-      {isLoading && <p className="mt-2">Loading....</p>}
-      {!isLoading && country && city && (
-        <div className="mt-2">
-          Your country is {country} and city is {city}.
-        </div>
-      )}
-    </div>
+    <div className="plasmo-flex plasmo-flex-col plasmo-items-center plasmo-justify-center plasmo-h-screen">
+    <button
+      className={`plasmo-w-24 h-24 plasmo-rounded-full plasmo-bg-red-500 plasmo-text-white ${
+        isLoading ? "plasmo-hidden" : "plasmo-block"
+      }`}
+      onClick={getLocation}
+      disabled={isLoading}
+    >
+      Show my Location
+    </button>
+    {isLoading && (
+      <div className="plasmo-w-24 h-24 plasmo-rounded-full plasmo-bg-green-500 plasmo-flex plasmo-items-center plasmo-justify-center">
+        Loading....
+      </div>
+    )}
+    {!isLoading && country && city && (
+      <div className="plasmo-mt-4 plasmo-text-center">
+        Your country is {country} and city is {city}.
+      </div>
+    )}
+  </div>
   );
 };
-
-export default LocationButton;
